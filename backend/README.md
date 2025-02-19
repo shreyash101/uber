@@ -206,3 +206,85 @@ Example:
   }
 }
 ```
+
+# Captain Login Endpoint
+
+## Endpoint
+`POST /captains/login`
+
+## Description
+This endpoint is used to log in an existing captain. It validates the input data, checks the captain's credentials, and returns an authentication token along with the captain details.
+
+## Request Body
+The request body should be a JSON object with the following fields:
+
+- `email`: A string representing the captain's email (required)
+- `password`: A string with a minimum length of 6 characters (required)
+
+## Example Response
+
+Example:
+```json
+{
+  "captain": {
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "red",
+      "plate": "ABC123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  },
+  "token": "your-auth-token"
+}
+```
+
+# Get Captain Profile Endpoint
+
+## Endpoint
+`GET /captains/profile`
+
+## Description
+This endpoint is used to get the profile of the currently authenticated captain. It returns the captain details.
+
+## Example Response
+
+Example:
+```json
+{
+  "captain": {
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "red",
+      "plate": "ABC123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+# Captain Logout Endpoint
+
+## Endpoint
+`GET /captains/logout`
+
+## Description
+This endpoint is used to log out the currently authenticated captain. It clears the authentication token and adds it to a blacklist.
+
+## Example Response
+
+Example:
+```json
+{
+  "message": "Logged out successfully"
+}
+```
