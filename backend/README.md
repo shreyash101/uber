@@ -163,3 +163,46 @@ Example:
   "message": "Logged out successfully"
 }
 ```
+
+# Captain Registration Endpoint
+
+## Endpoint
+`POST /captains/register`
+
+## Description
+This endpoint is used to register a new captain. It validates the input data, hashes the password, creates a new captain in the database, and returns the captain details.
+
+## Request Body
+The request body should be a JSON object with the following fields:
+
+- `fullname`: An object containing:
+  - `firstname`: A string with a minimum length of 3 characters (required)
+  - `lastname`: A string with a minimum length of 3 characters (optional)
+- `email`: A string representing the captain's email (required)
+- `password`: A string with a minimum length of 6 characters (required)
+- `vehicle`: An object containing:
+  - `color`: A string with a minimum length of 3 characters (required)
+  - `plate`: A string with a minimum length of 3 characters (required)
+  - `capacity`: An integer with a minimum value of 1 (required)
+  - `vehicleType`: A string that must be one of 'car', 'motorcycle', or 'auto' (required)
+
+### Example Response
+
+Example:
+```json
+{
+  "captain": {
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "red",
+      "plate": "ABC123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
